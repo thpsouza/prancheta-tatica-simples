@@ -45,8 +45,8 @@ select {
   max-width: 1000px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 16px;
+  align-items: center;
+  margin-bottom: 15px;
   gap: 12px;
   flex-wrap: wrap;
 }
@@ -72,18 +72,13 @@ select {
   }
 }
 
+
 .header-controls {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   flex-wrap: wrap;
-  flex: 1 1 320px;
-  min-width: 0;
-}
-
-#reset-lineup {
-  margin-left: auto;
-  flex-shrink: 0;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -95,11 +90,6 @@ select {
   .header h2 {
     width: 100%;
     text-align: center;
-    margin-bottom: 6px !important;
-  }
-
-  #reset-lineup {
-    margin-left: 0;
-    width: 100%;
+    margin-bottom: 5px !important;
   }
 }

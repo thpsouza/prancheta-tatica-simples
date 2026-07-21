@@ -8,7 +8,6 @@
   font-weight: bold;
   cursor: pointer;
   transition: background 0.2s;
-  white-space: nowrap;
 }
 .edit-btn:hover {
   background-color: #e68a00;
@@ -26,14 +25,24 @@
   border-radius: 5px;
   font-weight: bold;
   cursor: pointer;
-  margin-left: 12px;
+  margin-left: 15px;
   transition: background 0.2s;
-  white-space: nowrap;
 }
 .reset-btn:hover {
   background-color: #a71d2a;
 }
 
+.bench-container .reset-btn {
+  width: 100%;
+  margin: 12px 0 0;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .bench-container .reset-btn {
+    margin-top: 10px;
+  }
+}
 
 /* Caixa de adicionar players */
 .add-player-box {
@@ -85,6 +94,26 @@
   flex-wrap: wrap; 
 }
 
+@media (max-width: 768px) {
+  .toolbar button {
+    flex: 1 1 100%; /* Faz os botões da toolbar ocuparem a linha inteira */
+    text-align: center;
+  }
+  
+  .edit-btn, .reset-btn {
+    flex: 1 1 45%; /* Divide o espaço igualmente entre os botões do header */
+    padding: 10px 5px; /* Reduz um pouco o padding lateral */
+    margin-left: 0; /* Remove a margem esquerda do botão limpar no mobile */
+    text-align: center;
+  }
+  
+  #tactic-selector {
+    flex: 1 1 100%; /* O seletor de tática ocupa uma linha só pra ele */
+  }
+}
+
+
+
 .action-btn {
   padding: 8px 12px;
   color: white;
@@ -94,33 +123,8 @@
   font-size: 14px;
   cursor: pointer;
   transition: background 0.2s;
-  flex: 1 1 220px;
-  min-width: 180px;
+  flex: 1 1 auto; 
   text-align: center;
-}
-
-@media (max-width: 768px) {
-  .toolbar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .toolbar .action-btn {
-    flex: 1 1 auto;
-    width: 100%;
-    min-width: 0;
-  }
-
-  .header-controls .edit-btn,
-  #reset-lineup {
-    flex: 1 1 calc(50% - 4px);
-    min-width: 0;
-    text-align: center;
-  }
-  
-  #tactic-selector {
-    flex: 1 1 100%;
-  }
 }
 
 .action-btn.blue { background-color: #0d6efd; }
