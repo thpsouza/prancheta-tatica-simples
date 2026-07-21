@@ -83,6 +83,26 @@
   flex-wrap: wrap; 
 }
 
+@media (max-width: 768px) {
+  .toolbar button {
+    flex: 1 1 100%; /* Faz os botões da toolbar ocuparem a linha inteira */
+    text-align: center;
+  }
+  
+  .edit-btn, .reset-btn {
+    flex: 1 1 45%; /* Divide o espaço igualmente entre os botões do header */
+    padding: 10px 5px; /* Reduz um pouco o padding lateral */
+    margin-left: 0; /* Remove a margem esquerda do botão limpar no mobile */
+    text-align: center;
+  }
+  
+  #tactic-selector {
+    flex: 1 1 100%; /* O seletor de tática ocupa uma linha só pra ele */
+  }
+}
+
+
+
 .action-btn {
   padding: 8px 12px;
   color: white;

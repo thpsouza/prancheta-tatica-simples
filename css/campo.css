@@ -17,6 +17,7 @@
   transform: perspective(1000px) rotateX(5deg);
   transform-origin: top center;
   display: block;
+  touch-action: none;
 }
 
 @media (max-width: 768px) {

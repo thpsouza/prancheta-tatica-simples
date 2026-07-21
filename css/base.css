@@ -71,3 +71,25 @@ select {
     gap: 12px;
   }
 }
+
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap; /* Isso salva a vida no mobile, permite quebrar linha */
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .header-controls {
+    gap: 8px;
+    justify-content: center; /* Centraliza no celular */
+  }
+  
+  .header h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px !important;
+  }
+}

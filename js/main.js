@@ -48,6 +48,12 @@ whatsappBtn.addEventListener(
     'click', exportWpp
 );
 
+MobileDragDrop.polyfill({
+    holdToDrag: 150 
+});
+
+window.addEventListener('touchmove', function() {}, {passive: false});
+
 // Inicializar
 setupDragAndDrop();
 if (!loadState()) {
