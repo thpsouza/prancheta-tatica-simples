@@ -1,0 +1,82 @@
+.slot {
+  position: absolute;
+  transform: translateX(-50%);
+  width: 15%;
+  min-width: 110px;
+  min-height: 55px;
+  max-height: 120px;
+  max-width: 160px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.25);
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  /* flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start; */
+
+  padding: 22px 4px 5px 4px;
+  gap: 4px;
+  z-index: 10;
+  transition: border-color 0.2s;
+}
+
+.slot::-webkit-scrollbar {
+  width: 4px;
+}
+
+.slot::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+}
+
+.slot.drag-over {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: #fff;
+}
+
+.slot-title {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+/* Player dentro do slot */
+.slot .player {
+  background: #e78567d8;
+  border-radius: 10px;
+  font-size: 12px;
+  padding: 4px 6px;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Slot no modo de edição */
+.pitch.edit-mode .slot {
+  cursor: move;
+  border-color: #ffeb3b;
+  box-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  .slot {
+    min-width: 90px;
+    max-width: 130px;
+    max-height: 110px;
+  }
+}

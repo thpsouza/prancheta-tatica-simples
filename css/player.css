@@ -1,0 +1,23 @@
+.player {
+  background: #1976d2;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: grab;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  user-select: none;
+}
+
+.player:active {
+  cursor: grabbing;
+}
+
+.player.selected {
+  border: 2px solid #ffeb3b;
+  box-shadow: 0 0 10px rgba(255, 235, 59, 0.8);
+  transform: scale(1.05);
+  background: #0d47a1;
+}

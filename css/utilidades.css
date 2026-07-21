@@ -1,0 +1,105 @@
+/* Botão de editar/reset tática*/
+.edit-btn {
+  padding: 10px 16px;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.edit-btn:hover {
+  background-color: #e68a00;
+}
+.edit-btn.active {
+  background-color: #4caf50;
+}
+
+/* Botão de limpar */
+.reset-btn {
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 15px;
+  transition: background 0.2s;
+}
+.reset-btn:hover {
+  background-color: #a71d2a;
+}
+
+
+/* Caixa de adicionar players */
+.add-player-box {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.add-player-box input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+}
+
+.add-player-box input:focus {
+  border-color: #1976d2;
+}
+
+.add-player-box button {
+  padding: 8px 14px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.add-player-box button:hover {
+  background-color: #115293;
+}
+
+
+/* Opções de exportar e compartilhar no wpp */
+.toolbar {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+  flex-wrap: wrap; 
+}
+
+.action-btn {
+  padding: 8px 12px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex: 1 1 auto; 
+  text-align: center;
+}
+
+.action-btn.blue { background-color: #0d6efd; }
+.action-btn.purple { background-color: #6f42c1; }
+.action-btn.green { background-color: #198754; }
+
+.action-btn.blue:hover { background-color: #0b5ed7; }
+.action-btn.purple:hover { background-color: #59339d; }
+.action-btn.green:hover { background-color: #157347; }

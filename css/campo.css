@@ -1,0 +1,69 @@
+.pitch-container {
+  flex: 2 1 0;
+  width: 100%;
+  min-width: 0;
+}
+
+.pitch {
+  width: 100%;
+  min-height: 320px;
+  height: clamp(320px, 60vw, 700px);
+  background-color: #2e7d32;
+  border: 4px solid #fff;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transform: perspective(1000px) rotateX(5deg);
+  transform-origin: top center;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .pitch {
+    height: clamp(320px, 72vw, 420px);
+  }
+}
+
+.pitch::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.pitch::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%;
+  aspect-ratio: 1 / 1;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+}
+
+.area-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45%;
+  height: 18%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-bottom: none;
+}
+
+.area-top {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45%;
+  height: 18%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top: none;
+}

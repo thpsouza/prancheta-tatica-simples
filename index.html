@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prancheta Society 7x7</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/banco.css" />
+    <link rel="stylesheet" href="css/campo.css" />
+    <link rel="stylesheet" href="css/player.css" />
+    <link rel="stylesheet" href="css/slots.css" />
+    <link rel="stylesheet" href="css/utilidades.css" />
+  </head>
+
+  <body>
+    <div class="header">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <h2 style="margin: 0;">Prancheta tática</h2>
+
+            <select id="tactic-selector">
+                <option value="3-2-1">Formação: 3-2-1</option>
+                <option value="2-3-1">Formação: 2-3-1</option>
+                <option value="2-1-2-1">Formação: 2-1-2-1</option>
+            </select>
+
+            <button id="toggle-edit-mode" class="edit-btn">Editar</button>
+            <button id="reset-tactic-btn" class="edit-btn">Resetar</button>
+        </div>
+        
+        <button id="reset-lineup" class="reset-btn">Limpar Extras</button>
+    </div>
+
+    <div class="toolbar">
+        <button id="export-img-btn" class="action-btn purple">📸 Exportar Imagem</button>
+        <button id="whatsapp-btn" class="action-btn green">💬 Enviar no WhatsApp</button>
+    </div>
+    
+    <div class="app-container">
+      <div class="pitch-container">
+        <div class="pitch" id="pitch">
+          <div class="area-bottom"></div>
+          <div class="area-top"></div>
+        </div>
+      </div>
+
+      <div class="bench-container">
+        <h3>Elenco (clique ou arraste)</h3>
+        <div class="add-player-box">
+            <input type="text" id="new-player-input" placeholder="Adicionar jogador..." />
+            <button id="add-player-btn">+</button>
+        </div>
+        <div class="players-list" id="bench-list">
+          <div class="player" draggable="true" id="p4">João #4</div>
+          <div class="player" draggable="true" id="p8">Thiago #6</div>
+          <div class="player" draggable="true" id="p5">Levi #7</div>
+          <div class="player" draggable="true" id="p1">Alcimar #8</div>
+          <div class="player" draggable="true" id="p7">Tarcitano #10</div>
+          <div class="player" draggable="true" id="p3">Daniel #15</div>
+          <div class="player" draggable="true" id="p2">Bruno #19</div>
+          <div class="player" draggable="true" id="p9">Wendel #67</div>
+          <div class="player" draggable="true" id="p6">Mateus #69</div>
+          <!-- <div class="player" draggable="true" id="p10">Adinan</div> -->
+          <!-- <div class="player" draggable="true" id="p11">Boueri</div> -->
+          <!-- <div class="player" draggable="true" id="p12">Cavaco</div> -->
+          <!-- <div class="player" draggable="true" id="p13">Gabriel</div> -->
+        </div>
+      </div>
+    </div>
+
+    <script src="js/taticas.js" defer></script>
+    <script src="js/funcoes.js" defer></script>
+    <script src="js/botoes.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
