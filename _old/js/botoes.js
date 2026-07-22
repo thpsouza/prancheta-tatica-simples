@@ -11,24 +11,6 @@ function clearLineup() {
 }
 
 
-function clearField() {
-  const bench = document.getElementById('bench-list');
-  // Verifica se há algum jogador selecionado e desmarca (para evitar bugs visuais)
-  if (selectedBenchPlayer) {
-    selectedBenchPlayer.classList.remove('selected');
-    selectedBenchPlayer = null;
-  }
-  const slots = pitch.querySelectorAll('.slot');
-  slots.forEach(slot => {
-    const playersInSlot = slot.querySelectorAll('.player');
-    playersInSlot.forEach(player => {
-      player.remove();
-    });
-  });
-  saveState();
-}
-
-
 // FUNÇÃO DO BOTÃO EDITAR POSIÇÃO 
 // (Permite alterar manualmente a tática)
 function editPositions() {
@@ -44,7 +26,7 @@ function editPositions() {
 }
 
 // FUNÇÃO DO BOTÃO RESET 
-// (Reseta as posições dos slots para o padrão da tática, sem remover jogadores)
+// (Limpa o campo e reseta as posições)
 function resetTactics() {
   const layout = tacticsMap[tacticSelector.value];
   layout.forEach(pos => {
@@ -54,6 +36,8 @@ function resetTactics() {
       slot.style.bottom = pos.y + '%';
     }
   });
+  const clonesOnPitch = pitch.querySelectorAll('.slot .player');
+  clonesOnPitch.forEach(clone => clone.remove());
   saveState();
 }
 
@@ -96,35 +80,9 @@ function exportPNG() {
   }).then(canvas => {
     pitch.style.transform = originalTransform; 
     const link = document.createElement('a');
-    link.download = 'escalacao.png';
+    link.download = 'escalacao-time.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
-  });
-}
-
-function exportPNGJogadas() {
-  const pitchJogadas = document.getElementById('pitch-jogadas');
-  const containerExport = document.getElementById('jogadas-container') || pitchJogadas.parentElement;
-  
-  if (!containerExport) return;
-
-  const originalTransform = pitchJogadas ? pitchJogadas.style.transform : 'none';
-  if (pitchJogadas) pitchJogadas.style.transform = 'none';
-
-  html2canvas(containerExport, { 
-    backgroundColor: null,
-    scale: 2,
-    useCORS: true
-  }).then(canvas => {
-    if (pitchJogadas) pitchJogadas.style.transform = originalTransform; 
-    
-    const link = document.createElement('a');
-    link.download = 'jogada_ensaida.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-  }).catch(error => {
-    console.error("Erro ao tentar exportar a imagem da jogada:", error);
-    if (pitchJogadas) pitchJogadas.style.transform = originalTransform;
   });
 }
 

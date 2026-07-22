@@ -6,7 +6,6 @@ const benchList = document.getElementById('bench-list');
 const tacticSelector = document.getElementById('tactic-selector');
 const editModeBtn = document.getElementById('toggle-edit-mode');
 const resetTacticBtn = document.getElementById('reset-tactic-btn');
-const clearFieldBtn = document.getElementById('clear-field-btn');
 
 // Banco
 const newPlayerInput = document.getElementById('new-player-input');
@@ -15,7 +14,6 @@ const clearBtn = document.getElementById('reset-lineup');
 
 // Toolbar
 const exportImgBtn = document.getElementById('export-img-btn');
-const exportImgBtn2 = document.getElementById('export-img-btn2');
 const whatsappBtn = document.getElementById('whatsapp-btn');
 
 let selectedBenchPlayer = null;
@@ -32,9 +30,6 @@ editModeBtn.addEventListener(
 resetTacticBtn.addEventListener(
     'click', resetTactics
 );
-clearFieldBtn.addEventListener(
-    'click', clearField
-)
 addPlayerBtn.addEventListener(
     'click', addNewPlayerToBench
 );
@@ -48,9 +43,6 @@ tacticSelector.addEventListener(
 );
 exportImgBtn.addEventListener(
     'click', exportPNG
-);
-exportImgBtn2.addEventListener(
-    'click', exportPNGJogadas
 );
 whatsappBtn.addEventListener(
     'click', exportWpp
@@ -66,28 +58,4 @@ window.addEventListener('touchmove', function() {}, {passive: false});
 setupDragAndDrop();
 if (!loadState()) {
   renderTactic('3-2-1');
-  saveState();
 }
-
-// Lógica de Abas
-const tabEscalacao = document.getElementById('tab-escalacao');
-const tabJogadas = document.getElementById('tab-jogadas');
-const viewEscalacao = document.getElementById('view-escalacao');
-const viewJogadas = document.getElementById('view-jogadas');
-
-tabEscalacao.addEventListener('click', () => {
-    tabEscalacao.classList.add('active');
-    tabJogadas.classList.remove('active');
-    viewEscalacao.classList.add('active');
-    viewJogadas.style.display = 'none';
-});
-
-tabJogadas.addEventListener('click', () => {
-    tabJogadas.classList.add('active');
-    tabEscalacao.classList.remove('active');
-    viewJogadas.style.display = 'flex';
-    viewEscalacao.classList.remove('active');
-    
-    // Dispara evento global para carregar os jogadores
-    window.dispatchEvent(new Event('loadJogadas'));
-});

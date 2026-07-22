@@ -1,24 +1,10 @@
+// Função para desenhar a tática
 function renderTactic(tacticKey) {
 
-  // Salvar jogadores atuais mapeados pelo ID do slot da tática
   const oldSlots = pitch.querySelectorAll('.slot');
-  let playersBySlotId = {};
-  let leftoverPlayers = [];
-  
-  oldSlots.forEach(slot => {
-    // slot.id é no formato "slot-gk", "slot-z1", etc.
-    const posId = slot.id.replace('slot-', '');
-    playersBySlotId[posId] = [];
-    const playersInSlot = slot.querySelectorAll('.player');
-    playersInSlot.forEach(p => {
-       playersBySlotId[posId].push(p);
-    });
-    slot.remove();
-  });
+  oldSlots.forEach(slot => slot.remove());
 
   const layout = tacticsMap[tacticKey];
-  const newSlots = [];
-  
   layout.forEach(pos => {
     const slot = document.createElement('div');
     slot.className = 'slot';
@@ -35,30 +21,7 @@ function renderTactic(tacticKey) {
     setupDropZone(slot);
     setupSlotClick(slot);
     pitch.appendChild(slot);
-    newSlots.push(slot);
   });
-  
-  // Distribuir jogadores salvos nos novos slots correspondentes
-  layout.forEach(pos => {
-      const targetSlot = document.getElementById('slot-' + pos.id);
-      if (playersBySlotId[pos.id]) {
-          playersBySlotId[pos.id].forEach(p => targetSlot.appendChild(p));
-          delete playersBySlotId[pos.id]; // Já foi alocado
-      }
-  });
-  
-  // Qualquer jogador de uma posição que não existe mais na nova tática (ex: z3) 
-  // será colocado no primeiro slot disponível para não ser perdido
-  Object.keys(playersBySlotId).forEach(oldId => {
-      playersBySlotId[oldId].forEach(p => {
-          if (newSlots.length > 0) {
-              // Coloca no primeiro slot (gk) ou tenta distribuir. Vamos botar no último slot (ataque)
-              newSlots[newSlots.length - 1].appendChild(p);
-          }
-      });
-  });
-  
-  newSlots.forEach(slot => updateSlotOpacities(slot));
 }
 
 

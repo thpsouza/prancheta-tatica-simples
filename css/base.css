@@ -93,3 +93,41 @@ select {
     margin-bottom: 5px !important;
   }
 }
+
+/* Abas */
+.tabs {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  background-color: #ddd;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+  flex: 1;
+  max-width: 200px;
+}
+
+.tab-btn.active {
+  background-color: #1976d2;
+  color: white;
+  border-color: #1976d2;
+}
+
+/* Views */
+.view-content {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.view-content.active {
+  display: flex;
+}

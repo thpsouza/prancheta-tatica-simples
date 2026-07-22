@@ -1,0 +1,99 @@
+.pieces-container {
+  flex: 1;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.pieces-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.piece-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  background: #f8f9fa;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  cursor: grab;
+}
+
+.token {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  cursor: grab;
+  z-index: 20;
+  transform: translate(-50%, -50%);
+  user-select: none;
+  touch-action: none;
+}
+
+.token:active {
+  cursor: grabbing;
+}
+
+.token-player {
+  background-color: #1976d2;
+  color: white;
+  width: 34px;
+  height: 34px;
+  font-weight: bold;
+  font-size: 14px;
+  border: 2px solid white;
+}
+
+.token-player .token-name {
+  position: absolute;
+  top: 100%;
+  margin-top: 4px;
+  font-size: 11px;
+  color: white;
+  background: rgba(0,0,0,0.7);
+  padding: 2px 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.token-bench {
+  position: relative;
+  transform: none;
+  left: auto;
+  top: auto;
+  margin: 0;
+}
+
+.token-bench .token-name {
+  position: static;
+  margin-top: 4px;
+}
+
+.token-opponent {
+  background-color: #dc3545;
+  width: 34px;
+  height: 34px;
+  border: 2px solid #000000;
+}
+
+.token-ball {
+  width: 24px;
+  height: 24px;
+  background: white;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+}
+
+#pitch-jogadas.drawing-mode .token {
+  pointer-events: none !important;
+}

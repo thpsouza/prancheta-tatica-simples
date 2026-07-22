@@ -6,11 +6,18 @@
     <title>Prancheta Society 7x7</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/banco.css" />
-    <link rel="stylesheet" href="css/campo.css" />
-    <link rel="stylesheet" href="css/player.css" />
-    <link rel="stylesheet" href="css/slots.css" />
     <link rel="stylesheet" href="css/utilidades.css" />
+    
+    <link rel="stylesheet" href="css/tela_escalacoes/player.css" />
+    <link rel="stylesheet" href="css/tela_escalacoes/slots.css" />
+    <link rel="stylesheet" href="css/tela_escalacoes/banco_escalacoes.css" />
+    <link rel="stylesheet" href="css/tela_escalacoes/campo_escalacoes.css" />
+
+
+    <link rel="stylesheet" href="css/tela_jogadas/pecas_jogadas.css" />
+    <link rel="stylesheet" href="css/tela_jogadas/banco_jogadas.css" />
+    <link rel="stylesheet" href="css/tela_jogadas/campo_jogadas.css" />
+    <link rel="stylesheet" href="css/tela_jogadas/toolbar.css" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mobile-drag-drop@2.3.0-rc.2/default.css">
     <script src="https://cdn.jsdelivr.net/npm/mobile-drag-drop@2.3.0-rc.2/index.min.js"></script>
@@ -20,24 +27,27 @@
     <div class="header">
         <div class="header-controls">
             <h2 style="margin: 0;">Prancheta tática</h2>
+            <button id="tab-escalacao" class="tab-btn active">Escalação</button>
+            <button id="tab-jogadas" class="tab-btn">Jogadas</button>
+        </div>
+    </div>
 
+    <!-- TELA DE ESCALAÇÃO -->
+    <div id="view-escalacao" class="view-content active">
+        <div class="toolbar">
             <select id="tactic-selector">
                 <option value="3-2-1">Formação: 3-2-1</option>
                 <option value="2-3-1">Formação: 2-3-1</option>
                 <option value="2-1-2-1">Formação: 2-1-2-1</option>
             </select>
-
-                <button id="toggle-edit-mode" class="edit-btn">Editar</button>
-            <button id="reset-tactic-btn" class="edit-btn">Resetar</button>
+            <button id="toggle-edit-mode" class="edit-btn">Editar</button>
+            <button id="reset-tactic-btn" class="edit-btn">Reposicionar</button>
+            <button id="clear-field-btn" class="edit-btn">Limpar</button>
+            <button id="export-img-btn" class="action-btn purple">📸 Exportar Imagem</button>
+            <button id="whatsapp-btn" class="action-btn green">💬 Enviar no WhatsApp</button>
         </div>
-    </div>
-
-    <div class="toolbar">
-        <button id="export-img-btn" class="action-btn purple">📸 Exportar Imagem</button>
-        <button id="whatsapp-btn" class="action-btn green">💬 Enviar no WhatsApp</button>
-    </div>
-    
-    <div class="app-container">
+        
+        <div class="app-container">
       <div class="pitch-container">
         <div class="pitch" id="pitch">
           <div class="area-bottom"></div>
@@ -66,13 +76,59 @@
           <!-- <div class="player" draggable="true" id="p12">Cavaco</div> -->
           <!-- <div class="player" draggable="true" id="p13">Gabriel</div> -->
         </div>
-        <button id="reset-lineup" class="reset-btn">Limpar Extras</button>
+        <button id="reset-lineup" class="reset-btn">Remover Extras</button>
       </div>
     </div>
+    </div>
+
+    <!-- TELA DE JOGADAS -->
+    <div id="view-jogadas" class="view-content" style="display: none;">
+      <div class="jogadas-toolbar">
+          <div class="draw-tools">
+              <button id="tool-move" class="draw-btn active">🖐️ Mover</button>
+              <button id="tool-freedraw" class="draw-btn">✏️ Lápis</button>
+              <button id="tool-line" class="draw-btn">📏 Linha Reta</button>
+              <button id="tool-eraser" class="draw-btn">🧽 Borracha</button>
+              <input type="color" id="draw-color" value="#ffffff" title="Cor da linha" style="cursor: pointer; padding: 0; border: none; border-radius: 5px; height: 32px; width: 32px;">
+              <input type="range" id="draw-width" min="1" max="10" value="3" title="Espessura da linha" style="cursor: pointer;">
+              <button id="clear-canvas" class="draw-btn red">🗑️ Limpar Desenho</button>
+              <button id="export-img-btn2" class="action-btn purple">📸 Exportar PNG</button>
+          </div>
+      </div>
+      
+      <div class="app-container app-container-horizontal">
+        <div class="pitch-container pitch-container-horizontal" id="jogadas-container">
+          <div class="pitch pitch-horizontal" id="pitch-jogadas">
+            <div class="area-left"></div>
+            <div class="area-right"></div>
+            <canvas id="drawing-canvas"></canvas>
+          </div>
+
+          <div class="bench-jogadas">
+
+            <div class="bench-team" id="my-team-bench">
+              <span class="bench-label">🟦 Reservas</span>
+            </div>
+            <button id="reset-team-players" class="reset-btn blue" title="Resetar jogadores do meu time" style="align-self: center; font-size: 12px; padding: 4px 8px;">↺</button>
+
+            <div class="bench-separator"></div>
+
+            <div class="bench-opponents" id="opponent-box">
+              <span class="bench-label">🟥 Adversários</span>
+            </div>
+            <button id="reset-opponents" class="reset-btn" title="Recolher adversários" style="align-self: center; font-size: 12px; padding: 4px 8px;">↺</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="eraser-cursor" style="display: none; position: fixed; border: 2px solid #000; background: rgba(255,255,255,0.6); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%);"></div>
 
     <script src="js/taticas.js" defer></script>
     <script src="js/funcoes.js" defer></script>
     <script src="js/botoes.js" defer></script>
     <script src="js/main.js" defer></script>
+    <script src="js/jogadas.js" defer></script>
   </body>
 </html>

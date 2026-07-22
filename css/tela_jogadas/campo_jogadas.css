@@ -1,0 +1,68 @@
+/* Campo Horizontal (Jogadas) */
+.app-container-horizontal {
+  flex-direction: column;
+}
+
+.pitch-container-horizontal {
+  flex: 3;
+}
+
+.pitch-horizontal {
+  width: 100%;
+  aspect-ratio: 1.54 / 1;
+  min-height: 300px;
+  transform: none !important;
+}
+
+@media (max-width: 768px) {
+  .app-container-horizontal {
+    flex-direction: column;
+  }
+  .pitch-horizontal {
+    aspect-ratio: 1.3 / 1;
+  }
+}
+
+.pitch-horizontal::before {
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.pitch-horizontal::after {
+  top: 50%;
+  left: 50%;
+  width: 15%;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+}
+
+.area-left, .area-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 45%;
+  width: 15%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.area-left {
+  left: 0;
+  border-left: none;
+}
+
+.area-right {
+  right: 0;
+  border-right: none;
+}
+
+#drawing-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* NÃO usar width/height CSS — isso escala o bitmap e causa zoom/offset */
+  z-index: 10;
+  pointer-events: none; /* Controlado via JS */
+}

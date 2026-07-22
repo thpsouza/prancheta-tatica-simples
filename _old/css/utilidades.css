@@ -1,4 +1,4 @@
-/* Botões de edição */
+/* Botão de editar/reset tática*/
 .edit-btn {
   padding: 10px 16px;
   background-color: #ff9800;
@@ -30,12 +30,6 @@
 }
 .reset-btn:hover {
   background-color: #a71d2a;
-}
-.reset-btn.blue { 
-  background-color: #0d6efd; 
-}
-.reset-btn.blue:hover { 
-  background-color: #115293;
 }
 
 .bench-container .reset-btn {
@@ -117,6 +111,8 @@
     flex: 1 1 100%; /* O seletor de tática ocupa uma linha só pra ele */
   }
 }
+
+
 
 .action-btn {
   padding: 8px 12px;

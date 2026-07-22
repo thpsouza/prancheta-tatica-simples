@@ -1,0 +1,40 @@
+.jogadas-toolbar {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.draw-tools {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.draw-btn {
+  padding: 8px 12px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.draw-btn:hover {
+  background-color: #5a6268;
+}
+
+.draw-btn.active {
+  background-color: #0d6efd;
+}
+
+.draw-btn.red {
+  background-color: #dc3545;
+}
+
+.draw-btn.red:hover {
+  background-color: #c82333;
+}
